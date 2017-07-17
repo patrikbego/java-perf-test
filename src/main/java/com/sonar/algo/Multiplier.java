@@ -12,7 +12,7 @@ import java.util.List;
 public class Multiplier {
 
 
-    public static void main(String[] args) {
+    public static void main(String [] args) {
 //        So: what's the product of the following two 64-digit numbers?
 //
 //        3141592653589793238462643383279502884197169399375105820974944592
