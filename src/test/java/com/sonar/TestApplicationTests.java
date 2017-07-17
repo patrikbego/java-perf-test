@@ -1,22 +1,16 @@
 package com.sonar;
 
-import org.assertj.core.util.Preconditions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class TestApplicationTests {
 
-    @Test
+//    @Test
     public void contextLoads() {
 
         int i = 31;
@@ -33,7 +27,7 @@ public class TestApplicationTests {
 
     }
 
-    @Test
+//    @Test
     public void testColl() {
         Collection<Integer> subTasks = new ArrayList<>();
         subTasks.add(4);
@@ -52,7 +46,7 @@ public class TestApplicationTests {
         System.out.println(ZoneOffset.systemDefault());
     }
 
-    @Test
+//    @Test
     public void testColl2() {
 
         List<String> mscs = Arrays.asList(" this ", " is ", " some ", " mock ");
@@ -73,7 +67,7 @@ public class TestApplicationTests {
         System.out.println(noticeMessage);
     }
 
-    @Test
+//    @Test
     public void testRandom() {
 
         Long start = Calendar.getInstance().getTimeInMillis();
@@ -87,7 +81,7 @@ public class TestApplicationTests {
         System.out.println(rand);
     }
 
-    @Test
+//    @Test
     public void testStringFormat() {
 
         Long start = Calendar.getInstance().getTimeInMillis();
@@ -100,7 +94,7 @@ public class TestApplicationTests {
         System.out.println(smth1);
     }
 
-    @Test
+//    @Test
     public void testPassByReference() {
 
         String smth = "nothing";
@@ -129,7 +123,7 @@ public class TestApplicationTests {
 
 //        Timestamp.valueOf(n);
 
-        Preconditions.checkNotNull(n, "This string is null");
+//        Preconditions.checkNotNull(n, "This string is null");
     }
 
     public class ThreadRunner implements Runnable {

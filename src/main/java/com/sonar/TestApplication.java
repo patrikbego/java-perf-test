@@ -1,11 +1,9 @@
 package com.sonar;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.time.*;
 import java.util.*;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class TestApplication {
 
     public static void main(String[] args) {
