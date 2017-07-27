@@ -33,9 +33,12 @@ public class Squarer {
 
     }
 
-    static void recursiveCall(int sizey, int sizex, int m[][]) {
-        for (int i = 0; i < sizey; i++) {
-            for (int j = 0; j < sizex; j++) {
+    static void recursiveCall(int m[][]) {
+
+        double booleanValue = Math.random();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
 //                if (m[i][j] == 1 && m[0][0] != 1 && m[sizey - 1][sizex -1] != 1)
 //                    m[i][j] = 0;
 //                else
@@ -43,12 +46,16 @@ public class Squarer {
 
 //                if(m[i - 1][j] == 1 )
 
-                if (i < sizex && j < sizey && (m[i + 1][j] == 0 || m[i][j + 1] == 0))
+                if (i < 3 && j < 3 && (m[i + 1][j] == 0 || m[i][j + 1] == 0))
                     m[i][j] = 1;
                 else
                     m[i][j] = 0;
 
+                //m[0][0] = 1
 
+                //m[i][j] = 1
+
+                //i > 0 && j > 0 && m[i][j] == 1
 
 
                 System.out.print(m[i][j]);
@@ -56,7 +63,7 @@ public class Squarer {
             System.out.println();
         }
         System.out.println();
-        if (m[0][0] == 0 && m[sizey - 1][sizex -1] == 0)
-            recursiveCall(sizey, sizex, m);
+        if (m[0][0] == 0 && m[3 - 1][3 -1] == 0)
+            recursiveCall(m);
     }
 }

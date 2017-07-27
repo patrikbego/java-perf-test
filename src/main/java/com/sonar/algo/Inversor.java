@@ -1,6 +1,7 @@
 package com.sonar.algo;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,54 @@ public class Inversor {
         return arrayList;
 
     }
+
+    public BigDecimal countHigherPairs(int[] array) {
+        BigDecimal counter = BigDecimal.ZERO;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] > array[j] && i < j) {
+//                    System.out.println("array[i] > array[j] " + array[i] + " > " + array[j]);
+                    counter.add(BigDecimal.ONE);
+                }
+
+            }
+        }
+        return counter;
+    }
+
+    private int[] merge(int[] a, int[] b) {
+        int[] c = new int[a.length + b.length];
+        int i = 0, j = 0;
+        for (int k = 0; k < c.length; k++) {
+
+            if (i >= a.length) {
+                c[k] = b[j++];
+            } else if (j >= b.length) {
+                c[k] = a[i++];
+            } else if (a[i] <= b[j]) {
+                c[k] = a[i++];
+            } else {
+                c[k] = b[j++];
+            }
+
+        }
+        return c;
+    }
+
+    public int[] mergesort(int[] input) {
+        int N = input.length;
+        if (N <= 1) return input;
+        int[] a = new int[N / 2];
+        int[] b = new int[N - N / 2];
+        for (int i = 0; i < a.length; i++)
+            a[i] = input[i];
+        for (int i = 0; i < b.length; i++)
+            b[i] = input[i + N / 2];
+//        return merge(mergesort(a), mergesort(b));
+        return merge(mergesort(a), mergesort(b));
+    }
+
 
     public List<Integer> sorter(List<Integer> unsortedList) {
 
@@ -89,7 +138,6 @@ public class Inversor {
     }
 
     private void merge(int low, int middle, int high) {
-//        recoursion++;
         // Copy both parts into the helper array
         for (int i = low; i <= high; i++) {
             helper[i] = numbers[i];
@@ -108,7 +156,7 @@ public class Inversor {
             } else {
                 numbers[k] = helper[j];
                 j++;
-                recoursion ++;
+                recoursion++;
             }
             k++;
 
@@ -124,56 +172,50 @@ public class Inversor {
 
     }
 
-    public void quicksort(int[] values) {
-        // check for empty or null array
-        if (values ==null || values.length==0){
-            return;
-        }
-        this.numbers = values;
-        number = values.length;
-        quicksort(0, number - 1);
-    }
-
-    private void quicksort(int low, int high) {
-        int i = low, j = high;
-        // Get the pivot element from the middle of the list
-        int pivot = numbers[low + (high-low)/2];
-
-        // Divide into two lists
-        while (i <= j) {
-            // If the current value from the left list is smaller than the pivot
-            // element then get the next element from the left list
-            while (numbers[i] < pivot) {
-                i++;
-            }
-            // If the current value from the right list is larger than the pivot
-            // element then get the next element from the right list
-            while (numbers[j] > pivot) {
-                j--;
-            }
-
-            // If we have found a value in the left list which is larger than
-            // the pivot element and if we have found a value in the right list
-            // which is smaller than the pivot element then we exchange the
-            // values.
-            // As we are done we can increase i and j
-            if (i <= j) {
-                exchange(i, j);
-                i++;
-                j--;
-            }
-        }
-        // Recursion
-        if (low < j)
-            quicksort(low, j);
-        if (i < high)
-            quicksort(i, high);
-    }
-
     private void exchange(int i, int j) {
         int temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
 
+    public static double mergesort(int[] a, int low, int high) {
+        if (low < high) {
+            int mid = (low + high) / 2;
+            double c1 = mergesort(a, low, mid);
+            double c2 = mergesort(a, mid + 1, high);
+            double c3 = merge(a, low, mid, high);
+            return c1 + c2 + c3;
+        }
+        return 0;
+    }
+
+    private static double merge(int[] a, int low, int mid, int high) {
+        double val = 0;
+        int[] ret = new int[high - low + 1];
+        int left_p = low;
+        int right_p = mid + 1;
+        int count = 0;
+        while (left_p <= mid && right_p <= high) {
+            if (a[left_p] <= a[right_p]) {
+                ret[count++] = a[left_p++];
+            } else {
+                int left = mid - left_p + 1;
+                val += left;
+                ret[count++] = a[right_p++];
+            }
+        }
+
+        while (right_p <= high) {
+            ret[count++] = a[right_p++];
+        }
+        while (left_p <= mid) {
+            ret[count++] = a[left_p++];
+        }
+        for (int i = low; i <= high; i++) {
+            a[i] = ret[i - low];
+        }
+        return val;
+    }
 }
+
+
