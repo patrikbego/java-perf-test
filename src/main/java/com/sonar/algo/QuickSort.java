@@ -10,7 +10,7 @@ public class QuickSort {
 
     public void sort(int[] values) {
         // check for empty or null array
-        if (values ==null || values.length==0){
+        if (values == null || values.length == 0) {
             return;
         }
         this.numbers = values;
@@ -21,7 +21,7 @@ public class QuickSort {
     private void quicksort(int low, int high) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
-        int pivot = numbers[low + (high-low)/2];
+        int pivot = numbers[low + (high - low) / 2];
 
         // Divide into two lists
         while (i <= j) {
@@ -42,7 +42,7 @@ public class QuickSort {
             // values.
             // As we are done we can increase i and j
             if (i <= j) {
-                exchange(i, j);
+                swap(i, j);
                 i++;
                 j--;
             }
@@ -54,7 +54,45 @@ public class QuickSort {
             quicksort(i, high);
     }
 
-    private void exchange(int i, int j) {
+    public void party(int[] values) {
+        // check for empty or null array
+        if (values == null || values.length == 0) {
+            return;
+        }
+        this.numbers = values;
+        partition(0, values.length - 1);
+    }
+
+    private void partition(int leftIndex, int rightIndex) {
+//            int pivot = numbers[leftIndex];
+//            int i = leftIndex + 1;
+//
+//            for (int k = i; k <= rightIndex; k++) {
+//                int currentNumber = numbers[k];
+//                if (currentNumber < pivot) {
+//                    swap(k, i);
+//                    i++;
+//                }
+//            }
+//            swap(leftIndex, i - 1);
+
+        int pivot = numbers[leftIndex];
+
+        for (int j = leftIndex + 1; j <= rightIndex; j++) {
+            int currentNumberAfterPivot = numbers[j];
+            if (currentNumberAfterPivot < pivot) {
+                swap(j - 1, j);
+            }
+        }
+
+        for (int d = 0; d < numbers.length - 1; d++) {
+            if (numbers[d] > numbers[d + 1]) {
+                partition(leftIndex, numbers.length - 1);
+            }
+        }
+    }
+
+    private void swap(int i, int j) {
         int temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;

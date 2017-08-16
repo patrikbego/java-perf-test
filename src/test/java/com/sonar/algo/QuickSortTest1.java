@@ -6,14 +6,12 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * Created by begop on 27/07/2017.
  */
-public class QuickSortTest {
+public class QuickSortTest1 {
     private int[] numbers;
     private final static int SIZE = 10000;
 
@@ -29,13 +27,13 @@ public class QuickSortTest {
     @Test
     public void testNull() {
         QuickSort sorter = new QuickSort();
-        sorter.sort(null);
+        sorter.party(null);
     }
 
     @Test
     public void testEmpty() {
         QuickSort sorter = new QuickSort();
-        sorter.sort(new int[0]);
+        sorter.party(new int[0]);
     }
 
     @Test
@@ -43,14 +41,14 @@ public class QuickSortTest {
         QuickSort sorter = new QuickSort();
         int[] test = new int[1];
         test[0] = 5;
-        sorter.sort(test);
+        sorter.party(test);
     }
 
     @Test
     public void testSpecial() {
         QuickSort sorter = new QuickSort();
         int[] test = {5, 5, 6, 6, 4, 4, 5, 5, 4, 4, 6, 6, 5, 5};
-        sorter.sort(test);
+        sorter.party(test);
         if (!validate(test)) {
             fail("Should not happen");
         }
@@ -77,7 +75,7 @@ public class QuickSortTest {
         long startTime = System.currentTimeMillis();
 
         QuickSort sorter = new QuickSort();
-        sorter.sort(numbers);
+        sorter.party(numbers);
 //        System.out.println("Nr of recursion : " + sorter.getNrOfRecursions());
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
