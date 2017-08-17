@@ -1,13 +1,17 @@
 package com.sonar.algo;
 
 public class NewQuickSort {
+
+    static int recursionCount = 0;
+
     public static int[] sort(int[] arrayInt) {
         int[] finalArray = {};
-        if (arrayInt.length > 0) {
+        if (arrayInt != null && arrayInt.length > 0) {
             int pivotIndex = 0;
             int pivot = arrayInt[pivotIndex];
             int leftPartitionSize = 0;
             int rightPartitionSize = 0;
+
             int[] leftPartitionArray = new int[arrayInt.length];
             int[] rightPartitionArray = new int[arrayInt.length];
 
@@ -28,7 +32,6 @@ public class NewQuickSort {
 
             int[] temp = leftPartitionArray;
             leftPartitionArray = new int[leftPartitionSize];
-
             for (int j = 0; j < leftPartitionSize; j++) {
                 leftPartitionArray[j] = temp[j];
             }
@@ -39,28 +42,29 @@ public class NewQuickSort {
                 rightPartitionArray[j] = temp[j];
             }
 
-            if (leftPartitionArray.length > 1)
+            if (leftPartitionArray.length > 1) {
                 leftPartitionArray = sort(leftPartitionArray);
-            if (rightPartitionArray.length > 0)
+                recursionCount++;
+            }
+            if (rightPartitionArray.length > 0) {
                 rightPartitionArray = sort(rightPartitionArray);
+                recursionCount++;
+            }
+
 
             finalArray = new int[leftPartitionArray.length + rightPartitionArray.length];
 
-            System.arraycopy(leftPartitionArray, 0, finalArray, 0, leftPartitionArray.length);
-            System.arraycopy(rightPartitionArray, 0, finalArray, leftPartitionArray.length, rightPartitionArray.length);
+            for (int i = 0; i < leftPartitionArray.length; i++) {
+                finalArray[i] = leftPartitionArray[i];
+            }
 
-//            System.out.println(Arrays.toString(finalArray));
+            for (int i = 0; i < rightPartitionArray.length; i++) {
+                finalArray[leftPartitionArray.length + i] = rightPartitionArray[i];
+            }
+
+            System.out.println("Nr. of Recursions : " + recursionCount);
         }
         return finalArray;
-    }
-
-    static boolean areAllElementsEqual(int[] array) {
-        int lastElement = array[array.length - 1];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != lastElement)
-                return false;
-        }
-        return true;
     }
 
     private static int[] swap(int[] arr, int i, int j) {
