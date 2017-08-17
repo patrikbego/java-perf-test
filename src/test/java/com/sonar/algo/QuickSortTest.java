@@ -35,7 +35,7 @@ public class QuickSortTest {
     @Test
     public void testEmpty() {
         QuickSort sorter = new QuickSort();
-        sorter.sort(new int[0]);
+        NewQuickSort.sort(new int[0]);
     }
 
     @Test
@@ -43,41 +43,29 @@ public class QuickSortTest {
         QuickSort sorter = new QuickSort();
         int[] test = new int[1];
         test[0] = 5;
-        sorter.sort(test);
+        NewQuickSort.sort(test);
     }
 
     @Test
     public void testSpecial() {
         QuickSort sorter = new QuickSort();
         int[] test = {5, 5, 6, 6, 4, 4, 5, 5, 4, 4, 6, 6, 5, 5};
-        sorter.sort(test);
+        test = NewQuickSort.sort(test);
         if (!validate(test)) {
             fail("Should not happen");
         }
         printResult(test);
     }
 
-    @Test
-    public void testSpecia1() {
-        QuickSort sorter = new QuickSort();
-//        int[] test = {4, 3, 1, 2};
-        int[] test = {5, 5, 6, 6, 4, 4, 5, 5, 4, 4, 6, 6, 5, 5};
-        sorter.party(test);
 
-        if (!validate(test)) {
-            fail("Should not happen");
-            printResult(test);
-        }
-    }
-
-//    @Test
+   @Test
 
     public void testQuickSort() {
 
         long startTime = System.currentTimeMillis();
 
         QuickSort sorter = new QuickSort();
-        sorter.sort(numbers);
+        numbers = NewQuickSort.sort(numbers);
 //        System.out.println("Nr of recursion : " + sorter.getNrOfRecursions());
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
@@ -95,7 +83,7 @@ public class QuickSortTest {
         Arrays.sort(numbers);
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
-        System.out.println("Standard Java sort " + elapsedTime);
+        System.out.println("Standard Java sort time: " + elapsedTime);
         if (!validate(numbers)) {
             fail("Should not happen");
         }

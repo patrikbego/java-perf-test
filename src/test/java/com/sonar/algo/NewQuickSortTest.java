@@ -3,9 +3,7 @@ package com.sonar.algo;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
-import static java.util.stream.Collectors.joining;
 import static org.junit.Assert.fail;
 
 public class NewQuickSortTest {
@@ -14,6 +12,26 @@ public class NewQuickSortTest {
     public void simple123Test() {
 
         int[] arrayInt = {7, 2, 3, 1, 5};
+        int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
+
+        Arrays.sort(arrayIntSorted);
+        compare2arrays(arrayIntSorted, NewQuickSort.sort(arrayInt));
+    }
+
+    @Test
+    public void simple54321Test() {
+
+        int[] arrayInt = {5, 4, 3, 2, 1};
+        int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
+
+        Arrays.sort(arrayIntSorted);
+        compare2arrays(arrayIntSorted, NewQuickSort.sort(arrayInt));
+    }
+
+    @Test
+    public void simple12345Test() {
+
+        int[] arrayInt = {1, 2, 3, 4, 5};
         int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
 
         Arrays.sort(arrayIntSorted);
@@ -63,13 +81,6 @@ public class NewQuickSortTest {
 
         Arrays.sort(arrayIntSorted);
         compare2arrays(arrayIntSorted, NewQuickSort.sort(arrayInt));
-    }
- @Test
-    public void tersmTest() {
-
-        List<String> terms = Arrays.asList("Vision", "color", "tinged");
-
-        System.out.println(terms.stream().collect(joining(" ")));
     }
 
 

@@ -1,7 +1,5 @@
 package com.sonar.algo;
 
-import java.util.Arrays;
-
 public class NewQuickSort {
     public static int[] sort(int[] arrayInt) {
         int[] finalArray = {};
@@ -10,50 +8,48 @@ public class NewQuickSort {
             int pivot = arrayInt[pivotIndex];
             int leftPartitionSize = 0;
             int rightPartitionSize = 0;
-            int[] leftPartionArray = new int[arrayInt.length];
-            int[] rightPartionArray = new int[arrayInt.length];
+            int[] leftPartitionArray = new int[arrayInt.length];
+            int[] rightPartitionArray = new int[arrayInt.length];
 
             for (int index = 0; index < arrayInt.length; index++) {
                 int arrayElementValue = arrayInt[index];
                 if (index != pivotIndex) {
                     if (arrayElementValue < pivot) {
-                        leftPartionArray[leftPartitionSize] = arrayElementValue;
+                        leftPartitionArray[leftPartitionSize] = arrayElementValue;
                         leftPartitionSize++;
                     } else {
-                        rightPartionArray[rightPartitionSize] = arrayElementValue;
+                        rightPartitionArray[rightPartitionSize] = arrayElementValue;
                         rightPartitionSize++;
                     }
                 }
             }
             leftPartitionSize++;
-            leftPartionArray[leftPartionArray.length - 1] = pivot;
+            leftPartitionArray[leftPartitionSize - 1] = pivot;
 
-            int[] temp = leftPartionArray;
-            leftPartionArray = new int[leftPartitionSize];
+            int[] temp = leftPartitionArray;
+            leftPartitionArray = new int[leftPartitionSize];
 
             for (int j = 0; j < leftPartitionSize; j++) {
-                leftPartionArray[j] = temp[j];
-//            System.out.println("Left element : " + temp[j]);
+                leftPartitionArray[j] = temp[j];
             }
 
-            temp = rightPartionArray;
-            rightPartionArray = new int[rightPartitionSize];
+            temp = rightPartitionArray;
+            rightPartitionArray = new int[rightPartitionSize];
             for (int j = 0; j < rightPartitionSize; j++) {
-                rightPartionArray[j] = temp[j];
-//            System.out.println("Right element : " + temp[j]);
+                rightPartitionArray[j] = temp[j];
             }
 
-            if (leftPartionArray.length > 0)
-                leftPartionArray = sort(leftPartionArray);
-            if (rightPartionArray.length > 0 && leftPartionArray.length != 0)
-                rightPartionArray = sort(rightPartionArray);
+            if (leftPartitionArray.length > 1)
+                leftPartitionArray = sort(leftPartitionArray);
+            if (rightPartitionArray.length > 0)
+                rightPartitionArray = sort(rightPartitionArray);
 
-            finalArray = new int[leftPartionArray.length + rightPartionArray.length];
+            finalArray = new int[leftPartitionArray.length + rightPartitionArray.length];
 
-            System.arraycopy(leftPartionArray, 0, finalArray, 0, leftPartionArray.length);
-            System.arraycopy(rightPartionArray, 0, finalArray, leftPartionArray.length, rightPartionArray.length);
+            System.arraycopy(leftPartitionArray, 0, finalArray, 0, leftPartitionArray.length);
+            System.arraycopy(rightPartitionArray, 0, finalArray, leftPartitionArray.length, rightPartitionArray.length);
 
-            System.out.println(Arrays.toString(finalArray));
+//            System.out.println(Arrays.toString(finalArray));
         }
         return finalArray;
     }
