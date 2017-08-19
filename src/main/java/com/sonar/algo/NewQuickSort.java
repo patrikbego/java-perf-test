@@ -62,7 +62,7 @@ public class NewQuickSort {
                 finalArray[leftPartitionArray.length + i] = rightPartitionArray[i];
             }
 
-            System.out.println("Nr. of Recursions : " + recursionCount);
+//            System.out.println("Nr. of Recursions : " + recursionCount);
         }
         return finalArray;
     }

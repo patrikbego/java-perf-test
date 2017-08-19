@@ -6,46 +6,34 @@ import static com.sonar.algo.NewQuickSort.recursionCount;
 
 
 public class QuickSortOpti {
-    public static int[] sort(int[] arrayInt) {
+    public static int[] sort(int[] arrayInt, int l) {
+//        recursionCount = recursionCount + arrayInt.length -1;
+        if (arrayInt != null && arrayInt.length > 1) {
+            int pivot = arrayInt[l];
+            int i = l + 1;
 
-        if (arrayInt != null && arrayInt.length > 0) {
-            int pivotIndex = 0;
-            int pivot = arrayInt[pivotIndex];
-            int leftPartitionSize = 0;
-            int rightPartitionSize = 0;
-
-            for (int index = 0; index < arrayInt.length; index++) {
-                if (index != pivotIndex) {
-                    if (arrayInt[index] < pivot) {
-                        arrayInt = swap(arrayInt, index, pivotIndex);
-                        pivotIndex = index;
-                        leftPartitionSize++;
-                    } else {
-                        rightPartitionSize++;
-                    }
+            for (int j = l + 1; j < arrayInt.length; j++) {
+                if (arrayInt[j] < pivot) {
+                    arrayInt = swap(arrayInt, j, i);
+                    i++;
                 }
             }
+            arrayInt = swap(arrayInt, l, i - 1);
+            if (i > l) {
+//
+                int[] unsortedLeftArray = Arrays.copyOfRange(arrayInt, 0, i);
+                recursionCount = recursionCount + unsortedLeftArray.length -1;
+                int[] leftArray = sort(unsortedLeftArray, l);
+                for (int k = 0; k < leftArray.length; k++) {
+                    arrayInt[k] = leftArray[k];
+                }
 
-            int[] leftArray = new int[0];
-            if (leftPartitionSize > 0) {
-                leftArray = sort(Arrays.copyOfRange(arrayInt, 0, leftPartitionSize));
-                recursionCount ++;
-            }
-
-            int[] rightArray = new int[0];
-            if (rightPartitionSize > 0) {
-                rightArray = sort(Arrays.copyOfRange(arrayInt, pivotIndex, arrayInt.length - 1));
-                recursionCount ++;
-            }
-
-            arrayInt = new int[leftArray.length + rightArray.length];
-
-            for (int i = 0; i < leftArray.length; i++) {
-                arrayInt[i] = leftArray[i];
-            }
-
-            for (int i = 0; i < rightArray.length; i++) {
-                arrayInt[leftArray.length + i] = rightArray[i];
+                int[] unsortedRightArray = Arrays.copyOfRange(arrayInt, i, arrayInt.length);
+                recursionCount = recursionCount + unsortedLeftArray.length -1;
+                int[] rightArray = sort(unsortedRightArray, l);
+                for (int k = 0; k < rightArray.length; k++) {
+                    arrayInt[leftArray.length + k] = rightArray[k];
+                }
             }
 
             System.out.println("Nr. of Recursions : " + recursionCount);

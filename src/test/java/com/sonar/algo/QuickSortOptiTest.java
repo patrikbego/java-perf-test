@@ -11,11 +11,12 @@ public class QuickSortOptiTest {
     @Test
     public void simple123Test() {
 
-        int[] arrayInt = {7, 2, 3, 1, 5};
+//        int[] arrayInt = {7, 6, 2, 3, 4, 1, 5, 10, 9, 8};
+        int[] arrayInt = {7, 10, 9, 8};
         int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
     @Test
@@ -25,7 +26,7 @@ public class QuickSortOptiTest {
         int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
     @Test
@@ -35,7 +36,7 @@ public class QuickSortOptiTest {
         int[] arrayIntSorted = Arrays.copyOf(arrayInt, arrayInt.length);
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
     @Test
@@ -46,7 +47,7 @@ public class QuickSortOptiTest {
 
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
 
@@ -58,7 +59,7 @@ public class QuickSortOptiTest {
 
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
     @Test
@@ -69,7 +70,7 @@ public class QuickSortOptiTest {
 
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
     @Test
@@ -80,7 +81,7 @@ public class QuickSortOptiTest {
 
 
         Arrays.sort(arrayIntSorted);
-        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt));
+        compare2arrays(arrayIntSorted, QuickSortOpti.sort(arrayInt, 0));
     }
 
 
