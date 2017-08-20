@@ -9,28 +9,28 @@ public class QuickSortOpti {
     public static int[] sort(int[] arrayInt, int l) {
 //        recursionCount = recursionCount + arrayInt.length -1;
         if (arrayInt != null && arrayInt.length > 1) {
-            int pivot = arrayInt[l];
-            int i = l + 1;
+            int pivot = arrayInt[l - 1];
+            int i = l - 2;
 
-            for (int j = l + 1; j < arrayInt.length; j++) {
-                if (arrayInt[j] < pivot) {
+            for (int j = l - 2; j >= 0; j--) {
+                if (arrayInt[j] > pivot) {
                     arrayInt = swap(arrayInt, j, i);
-                    i++;
+                    i--;
                 }
             }
-            arrayInt = swap(arrayInt, l, i - 1);
-            if (i > l) {
+            arrayInt = swap(arrayInt, l - 1, i + 1);
+            if (true) {
 //
-                int[] unsortedLeftArray = Arrays.copyOfRange(arrayInt, 0, i);
-                recursionCount = recursionCount + unsortedLeftArray.length -1;
-                int[] leftArray = sort(unsortedLeftArray, l);
+                int[] unsortedLeftArray = Arrays.copyOfRange(arrayInt, 0, i + 1);
+                recursionCount = recursionCount + unsortedLeftArray.length - 1;
+                int[] leftArray = sort(unsortedLeftArray, unsortedLeftArray.length);
                 for (int k = 0; k < leftArray.length; k++) {
                     arrayInt[k] = leftArray[k];
                 }
 
-                int[] unsortedRightArray = Arrays.copyOfRange(arrayInt, i, arrayInt.length);
-                recursionCount = recursionCount + unsortedLeftArray.length -1;
-                int[] rightArray = sort(unsortedRightArray, l);
+                int[] unsortedRightArray = Arrays.copyOfRange(arrayInt, i + 1, arrayInt.length);
+                recursionCount = recursionCount + unsortedRightArray.length - 1;
+                int[] rightArray = sort(unsortedRightArray, unsortedRightArray.length);
                 for (int k = 0; k < rightArray.length; k++) {
                     arrayInt[leftArray.length + k] = rightArray[k];
                 }

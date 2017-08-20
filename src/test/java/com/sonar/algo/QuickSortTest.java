@@ -50,7 +50,7 @@ public class QuickSortTest {
     public void testSpecial() {
         QuickSort sorter = new QuickSort();
         int[] test = {5, 5, 6, 6, 4, 4, 5, 5, 4, 4, 6, 6, 5, 5};
-        test = QuickSortOpti.sort(test, 0);
+        test = QuickSortOpti.sort(test, test.length);
         if (!validate(test)) {
             fail("Should not happen");
         }
@@ -65,7 +65,7 @@ public class QuickSortTest {
         long startTime = System.currentTimeMillis();
 
 //        QuickSort sorter = new QuickSort();
-        numbers = QuickSortOpti.sort(numbers, 0);
+        numbers = QuickSortOpti.sort(numbers,  numbers.length);
 //        System.out.println("Nr of recursion : " + sorter.getNrOfRecursions());
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
