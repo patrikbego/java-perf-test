@@ -1,13 +1,13 @@
 package com.sonar.algo;
 
-public class NewQuickSort {
+public class MiddlePivotQuickSort {
 
     static int recursionCount = 0;
 
     public static int[] sort(int[] arrayInt) {
         int[] finalArray = {};
         if (arrayInt != null && arrayInt.length > 0) {
-            int pivotIndex = 0;
+            int pivotIndex = arrayInt.length % 2 == 0 ? ((arrayInt.length / 2) - 1) : (arrayInt.length / 2);
             int pivot = arrayInt[pivotIndex];
             int leftPartitionSize = 0;
             int rightPartitionSize = 0;
@@ -43,10 +43,12 @@ public class NewQuickSort {
             }
 
             if (leftPartitionArray.length > 1) {
+                recursionCount = recursionCount + leftPartitionArray.length - 1;
                 leftPartitionArray = sort(leftPartitionArray);
                 recursionCount++;
             }
             if (rightPartitionArray.length > 0) {
+                recursionCount = recursionCount + rightPartitionArray.length - 1;
                 rightPartitionArray = sort(rightPartitionArray);
                 recursionCount++;
             }
@@ -62,7 +64,7 @@ public class NewQuickSort {
                 finalArray[leftPartitionArray.length + i] = rightPartitionArray[i];
             }
 
-//            System.out.println("Nr. of Recursions : " + recursionCount);
+            System.out.println("Nr. of Recursions : " + recursionCount);
         }
         return finalArray;
     }

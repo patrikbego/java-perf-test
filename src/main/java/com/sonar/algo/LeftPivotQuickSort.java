@@ -2,12 +2,11 @@ package com.sonar.algo;
 
 import java.util.Arrays;
 
-import static com.sonar.algo.NewQuickSort.recursionCount;
+import static com.sonar.algo.MiddlePivotQuickSort.recursionCount;
 
 
-public class QuickSortOpti {
+public class LeftPivotQuickSort {
     public static int[] sort(int[] arrayInt, int l) {
-//        recursionCount = recursionCount + arrayInt.length -1;
         if (arrayInt != null && arrayInt.length > 1) {
             int pivot = arrayInt[l - 1];
             int i = l - 2;
@@ -20,7 +19,6 @@ public class QuickSortOpti {
             }
             arrayInt = swap(arrayInt, l - 1, i + 1);
             if (true) {
-//
                 int[] unsortedLeftArray = Arrays.copyOfRange(arrayInt, 0, i + 1);
                 recursionCount = recursionCount + unsortedLeftArray.length - 1;
                 int[] leftArray = sort(unsortedLeftArray, unsortedLeftArray.length);
